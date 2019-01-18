@@ -1,0 +1,23 @@
+<button mat-raised-button color="primary" (click)="addToField()">Dodaj pola</button>
+
+<form [formGroup]="form">
+  <ng-container *ngFor="let item of form.get('data').controls; let i = index">
+    <ng-container [formGroup]="item">
+      <mat-form-field>
+        <input matInput placeholder="Wpisz imię" formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Wpisz nazwisko" formControlName="surname">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Wpisz adres" formControlName="address">
+      </mat-form-field>
+    </ng-container>
+  </ng-container>
+</form>
+<button mat-button type="submit" (click)="onSubmit()">Wyślij</button>
+
+<mat-card>
+<!--<pre>{{form.getRawValue() | json}}</pre>-->
+  <pre>{{dataList$ | async | json}}</pre>
+</mat-card>
