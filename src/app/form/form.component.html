@@ -17,7 +17,12 @@
 </form>
 <button mat-button type="submit" (click)="onSubmit()">Wyślij</button>
 
-<mat-card>
-<!--<pre>{{form.getRawValue() | json}}</pre>-->
-  <pre>{{dataList$ | async | json}}</pre>
+<ng-container *ngIf="(dataList$ | async)?.length > 0">
+<mat-card *ngFor="let item of (dataList$ | async)">
+  <!--<pre>{{dataList$ | async | json}}</pre>-->
+  <div>{{ item.name }}</div>
+  <div>{{ item.surname }}</div>
+  <div>{{ item.address }}</div>
+  <div></div>
 </mat-card>
+</ng-container>
